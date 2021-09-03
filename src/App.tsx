@@ -59,25 +59,16 @@ function App() {
       if (devices && devices.length) {
         var cameraId = devices[0].id;
         const html5QrCode = new Html5Qrcode(/* element id */ 'reader');
-        html5QrCode
-          .start(
-            cameraId,
-            {
-              fps: 10, // Optional frame per seconds for qr code scanning
-              qrbox: 250, // Optional if you want bounded box UI
-            },
-            qrCodeMessage => {
-              console.log(qrCodeMessage);
-              setCamMessage(qrCodeMessage);
-            },
-            errorMessage => {
-              // console.log(errorMessage);
-              setCamError(errorMessage);
-            }
-          )
-          .catch(err => {
-            // Start failed, handle it.
-          });
+        const qrCodeSuccessCallback = message => {
+          console.log(message);
+          setCamMessage(message);
+        };
+        const config = { fps: 10, qrbox: 250 };
+        html5QrCode.start(
+          { facingMode: { exact: 'user' } },
+          config,
+          qrCodeSuccessCallback
+        );
       }
     });
     {
