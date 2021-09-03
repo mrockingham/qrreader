@@ -65,7 +65,7 @@ function App() {
         };
         const config = { fps: 10, qrbox: 250 };
         html5QrCode.start(
-          { facingMode: { exact: 'user' } },
+          { facingMode: 'environment' },
           config,
           qrCodeSuccessCallback
         );
