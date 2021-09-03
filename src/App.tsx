@@ -81,12 +81,11 @@ function App() {
   console.log('labels', camLabel);
 
   return (
-    <div className="App">
-      Something
+    <Box mt={10} className="App">
       <div id="reader"></div>
-      <Text>Select Camera</Text>
+      <Text>Click to Scan Profile</Text>
       <Button colorScheme="teal" size="md" onClick={openQRScanner}>
-        OpenQR
+        Profile
       </Button>
       {/* <Menu>
         {({ isOpen }) => (
@@ -106,11 +105,14 @@ function App() {
           </>
         )}
       </Menu> */}
+      <Text visibility={camMessage.length > 0 ? 'hidden' : 'visible'}>
+        Scanning...
+      </Text>
       <Box visibility={camMessage.length === 0 ? 'hidden' : 'visible'}>
         <Link href={camMessage}>Click To Go To Profile</Link>
       </Box>
       <div id="reader2"></div>
-    </div>
+    </Box>
   );
 }
 
