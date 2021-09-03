@@ -9,6 +9,7 @@ import {
   MenuList,
   MenuItem,
   Button,
+  Link,
 } from '@chakra-ui/react';
 import './App.css';
 import { idText } from 'typescript';
@@ -105,8 +106,7 @@ function App() {
           </>
         )}
       </Menu>
-      <div>cam:message {camMessage}</div>
-      <div>cam:error{camError}</div>
+      <Link href={camMessage}>Click To Go To Profile</Link>
       <div id="reader2"></div>
     </div>
   );
