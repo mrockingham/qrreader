@@ -36,6 +36,7 @@ import './App.css';
 function App() {
   const [camLabel, setCamLabel] = useState<CameraList>([]);
   const [camMessage, setCamMessage] = useState('');
+  const [scan, setScan] = useState(false);
 
   const openQRScanner = () => {
     Html5Qrcode.getCameras().then(devices => {
@@ -54,6 +55,7 @@ function App() {
         );
       }
     });
+    setScan(true);
   };
 
   // useEffect(() => {
@@ -105,7 +107,7 @@ function App() {
           </>
         )}
       </Menu> */}
-      <Text visibility={camMessage.length > 0 ? 'hidden' : 'visible'}>
+      <Text visibility={scan === false ? 'hidden' : 'visible'}>
         Scanning...
       </Text>
       <Box visibility={camMessage.length === 0 ? 'hidden' : 'visible'}>
